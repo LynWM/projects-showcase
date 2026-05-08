@@ -1,12 +1,21 @@
 import React, { useState } from 'react'
 
-const emptyForm = { name: '', description: '', type: '' }
+const emptyForm = { 
+    name: '', 
+    description: '', 
+    type: '' 
+  }
 
 export default function AddProject({ onAddProject }) {
+
+  // STATES
   const [form, setForm] = useState(emptyForm)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
 
+  // FUNCTIONS
+
+  // Validating form
   const validate = () => {
     const e = {}
     if (!form.name.trim()) e.name = 'Required'
@@ -15,12 +24,14 @@ export default function AddProject({ onAddProject }) {
     return e
   }
 
+  // Handling change
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm(prev => ({ ...prev, [name]: value }))
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }))
   }
 
+  // Handling submit
   const handleSubmit = () => {
     const e = validate()
     if (Object.keys(e).length) { setErrors(e); return }
@@ -32,60 +43,69 @@ export default function AddProject({ onAddProject }) {
   }
 
   return (
-    <div className="p-6 flex flex-col gap-6">
+    <div className='flex flex-col p-6 gap-6'>
 
       <div>
-        <p className="text-xs text-gray-400 tracking-widest uppercase mb-1">New Entry</p>
-        <h2 className="font-barlow text-xl font-semibold text-gray-900">Projects Form</h2>
-        <p className="text-sm text-gray-500 mt-1">Enter Project Details in the form below.</p>
+        <h2 className='font-barlow text-xl font-semibold'>
+          Projects Form  
+        </h2>
+
+        <p className='text-sm text-gray-600 mt-2'>
+          Enter Project Details in the form below.
+        </p>
+        
       </div>
 
-      {/* Project Name */}
       <div>
-        <label className="text-xs text-gray-500 tracking-wide block mb-1">Project Name</label>
-        <input
+        <label className='text-xs text-gray-600 block mb-1'>
+          Project Name
+        </label>
+
+        <input className={`w-full border ${errors.name ? 'border-red-800' : 'border-gray-500'} rounded-lg px-3 py-2 text-sm`}
           name="name"
           value={form.name}
           onChange={handleChange}
           placeholder="Enter Project Name ...."
-          className={`w-full bg-white border ${errors.name ? 'border-red-400' : 'border-gray-300'} rounded-lg px-3 py-2 text-sm text-gray-900 placeholder-gray-900 focus:outline-none focus:border-gray-500 transition-colors`}
+          
         />
-        {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
+        {errors.name && <p className="text-red-800 text-xs mt-1">{errors.name}</p>}
       </div>
 
-      {/* Project Type */}
       <div>
-        <label className="text-xs text-gray-500 tracking-wide block mb-1">Project Type</label>
-        <input
+        <label className='text-xs text-gray-600 block mb-1'>
+          Project Type
+        </label>
+
+        <input className={`w-full border ${errors.name ? 'border-red-800' : 'border-gray-500'} rounded-lg px-3 py-2 text-sm`}
           name="type"
           value={form.type}
           onChange={handleChange}
-          placeholder="Enter Project Category ...."
-          className={`w-full bg-white border ${errors.type ? 'border-red-400' : 'border-gray-300'} rounded-lg px-3 py-2 text-sm text-gray-900 placeholder-gray-900 focus:outline-none focus:border-gray-500 transition-colors`}
+          placeholder="Enter Project Type...."
         />
-        {errors.type && <p className="text-red-400 text-xs mt-1">{errors.type}</p>}
+        {errors.type && <p className="text-red-800 text-xs mt-1">{errors.type}</p>}
       </div>
 
-      {/* Description */}
+      
       <div>
-        <label className="text-xs text-gray-500 tracking-wide block mb-1">Description</label>
-        <textarea
+        <label className='text-xs text-gray-600 block mb-1'>
+          Description
+        </label>
+
+        <textarea className={`w-full border ${errors.name ? 'border-red-800' : 'border-gray-500'} rounded-lg px-3 py-2 text-sm`}
           name="description"
           value={form.description}
           onChange={handleChange}
           placeholder="Enter Project Description ...."
           rows={4}
-          className={`w-full bg-white border ${errors.description ? 'border-red-400' : 'border-gray-300'} rounded-lg px-3 py-2 text-sm text-gray-900 placeholder-gray-900 focus:outline-none focus:border-gray-500 transition-colors resize-none`}
         />
-        {errors.description && <p className="text-red-400 text-xs mt-1">{errors.description}</p>}
+        {errors.description && <p className="text-red-800 text-xs mt-1">{errors.description}</p>}
       </div>
 
-      {/* Submit */}
       <button
         onClick={handleSubmit}
-        className={`w-full py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${submitted ? 'bg-green-500 text-white' : 'bg-gray-800 hover:bg-gray-700 text-white'}`}
+        className={`w-full py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all ${submitted ? 'bg-green-700 text-white' : 'bg-gray-800 hover:bg-gray-600 text-white'}`}
       >
-        {submitted ? '✓ Project Added' : 'Add Project'}
+        {submitted ? 'Project Added' : 'Add Project'}
       </button>
 
     </div>
