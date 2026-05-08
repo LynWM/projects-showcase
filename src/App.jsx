@@ -3,6 +3,8 @@ import AddProject from './components/add-project'
 import ProjectsList from './components/projects-list'
 
 export default function App() {
+
+  // STATES
   const [projects, setProjects] = useState(() => {
     try {
       const stored = localStorage.getItem('projects')
@@ -25,25 +27,33 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans">
+    <div className='min-h-screen bg-white text-gray-900 font-sans'>
 
-      {/* Header */}
-      <header className="border-b border-gray-200 px-8 py-5">
-        <h2 className="font-barlow text-2xl font-bold text-gray-900">My Projects Showcase</h2>
-        <p className="text-sm text-gray-500 mt-1">This is a Single Page Application that showcases all my projects.</p>
-      </header>
+      <div className='flex flex-col border-b border-gray-700 px-8 py-4 gap-4'>
 
-      {/* Main layout — side by side */}
-      <main className="flex h-[calc(100vh-80px)]">
+        <h2 className='font-barlow text-2xl font-bold'>
+          My Projects Showcase
+        </h2>
 
-        {/* Left — Add Project */}
-        <aside className="w-80 min-w-72 border-r border-gray-200 overflow-y-auto">
+        <p className='text-gray-600'>
+          This is a Single Page Application that showcases all my projects, past and present.
+        </p>
+      </div>
+
+      
+      <main className='flex h-[calc(100vh-80px)]'>
+
+        {/* AddProjects Component */}
+        <aside className='w-80 min-w-72 border-r border-gray-700'>
           <AddProject onAddProject={handleAddProject} />
         </aside>
 
-        {/* Right — Projects List */}
-        <section className="flex-1 overflow-y-auto">
-          <ProjectsList projects={projects} onDeleteProject={handleDeleteProject} />
+        {/* ProjectsList Component */}
+        <section className='flex-1'>
+          <ProjectsList 
+              projects={projects} 
+              onDeleteProject={handleDeleteProject} 
+            />
         </section>
 
       </main>
