@@ -8,4 +8,4 @@ The project incorporates the use of:
 - Forms
 - Hooks
 - Search filter
-- Local Storage (for storing saved expenses)
+- Local Storage (for storing saved projects)
