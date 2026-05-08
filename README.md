@@ -1,16 +1,11 @@
-# React + Vite
+# Personal Projects Showcase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a Single Page React Application that enables users to add projects, with its details, and view them on a list of saved projects.
 
-Currently, two official plugins are available:
+Each project is displayed in its own card.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The project incorporates the use of:
+- Forms
+- Hooks
+- Search filter
+- Local Storage (for storing saved expenses)
